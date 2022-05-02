@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Подраздел работы с клинтами</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div th:switch="${clients}">
+        <h2 th:case="null">Список клиентов пуст</h2>
+        <div th:case="*">
+            <h2>Клиенты</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Ид</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="client : ${clients}">
+                    <td th:text="${client.id}"></td>
+                    <td th:text="${client.surname}"></td>
+                    <td th:text="${client.firstname}"></td>
+                    <td th:text="${client.patronymic}"></td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>
